@@ -1,0 +1,14 @@
+{
+  "watch": [
+    "src",
+    "playground",
+    "tsconfig.json",
+    "package.json",
+    "nodemon.json"
+  ],
+  "ext": "ts,json",
+  "ignore": [
+    "**/*.spec.ts",
+    "**/*.e2e.ts"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "ts-node-package-boilerplate",
+  "version": "0.1.0",
+  "description": "TypeScript Node Package Boilerplate",
+  "author": "Noah Snoeks",
+  "license": "MIT",
+  "homepage": "https://github.com/ZYANIDE/ts-npm-package-boilerplate#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZYANIDE/ts-npm-package-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZYANIDE/ts-npm-package-boilerplate/issues"
+  },
+  "private": true,
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "playground": "ts-node playground/main.ts",
+    "playground:watch": "nodemon --exec \"npm run playground\"",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:ci": "npm run test:cov",
+    "test:watch": "npm run test -- --watch",
+    "test:cov": "npm run test -- --coverage",
+    "prebuild": "rimraf dist && rimraf src/export.ts",
+    "build": "npm run prebuild && npm run build:export && npm run build:dist",
+    "build:dist": "tsc",
+    "build:export": "cti entrypoint -n -b -i *.spec.ts -o export.ts src",
+    "build:stage": "git add dist",
+    "lint": "eslint \"{src,test,playground}/**/*.ts\" --fix",
+    "format": "prettier --write \\\"(src|playground|test)/**/*.ts\\\"",
+    "format:check": "prettier --check \\\"(src|playground|test)/**/*.ts\\\"",
+    "commit": "cz",
+    "semantic-release": "semantic-release",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "commitizen": "^4.3.0",
+    "create-ts-index": "^1.14.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
+    "semantic-release": "^21.0.7",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.6"
+  }
+}
